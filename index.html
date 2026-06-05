@@ -7,7 +7,7 @@
 
   <script>
     /* =======================================================================================================================
-                             MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
+                           MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
        ======================================================================================================================= */
     /* =========================================================
        AŞAĞIYI DÜZENLEYEBİLİRSİN
@@ -160,6 +160,7 @@
       to{transform:translateY(42px)}
     }
 
+    /* Yorumlar ve galeri için ortak marquee animasyonu */
     @keyframes marquee{
       from{transform:translateX(0)}
       to{transform:translateX(-50%)}
@@ -306,13 +307,12 @@
     .mini h3{margin:.2rem 0 .45rem;font-size:1rem}
     .mini a{color:var(--color-primary);font-weight:700}
 
-    .service-grid,.gallery-grid,.pricing-grid,.contact-grid{
+    .service-grid,.pricing-grid,.contact-grid{
       display:grid;
       gap:1rem;
     }
 
     .service-grid{grid-template-columns:repeat(3,1fr)}
-    .gallery-grid{grid-template-columns:repeat(3,1fr)}
     .pricing-grid{grid-template-columns:repeat(3,1fr)}
     .contact-grid{grid-template-columns:1fr 1fr}
 
@@ -331,11 +331,31 @@
       font-size:1.05rem;
     }
 
+    /* === Kayan galeri === */
+
+    .gallery-marquee{
+      overflow:hidden;
+      position:relative;
+    }
+
+    .gallery-track{
+      display:flex;
+      gap:1rem;
+      width:max-content;
+      animation:marquee 25s linear infinite;
+    }
+
+    .gallery-track:hover{
+      animation-play-state:paused;
+    }
+
     .gallery-card{
+      min-width:260px;
+      max-width:320px;
       padding:0;
       overflow:hidden;
-      min-height:240px;
       position:relative;
+      border-radius:var(--radius-lg);
     }
 
     .gallery-card img{
@@ -397,25 +417,26 @@
     .contact-list{display:grid;gap:.6rem;color:var(--color-text-muted)}
 
     .whatsapp-float{
-  position:fixed;
-  right:1rem;
-  bottom:calc(1rem + env(safe-area-inset-bottom, 0px));
-  z-index:9999;
-}
+      position:fixed;
+      right:1rem;
+      bottom:calc(1rem + env(safe-area-inset-bottom, 0px));
+      z-index:9999;
+    }
 
-.whatsapp-float a{
-  min-width:44px;
-  min-height:44px;
-  border-radius:999px;
-  padding:.95rem 1.1rem;
-  background:#25d366;
-  color:#0b0c10;
-  font-weight:800;
-  display:inline-flex;
-  align-items:center;
-  gap:.55rem;
-  box-shadow:var(--shadow-lg);
-}
+    .whatsapp-float a{
+      min-width:44px;
+      min-height:44px;
+      border-radius:999px;
+      padding:.95rem 1.1rem;
+      background:#25d366;
+      color:#0b0c10;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      box-shadow:var(--shadow-lg);
+    }
+
     .footer{padding:2rem 0 3rem;color:var(--color-text-muted)}
 
     .footer-box{
@@ -429,14 +450,12 @@
 
     @media (max-width: 980px){
       .hero-wrap,.contact-grid,.service-grid,.pricing-grid{grid-template-columns:1fr}
-      .gallery-grid{grid-template-columns:1fr 1fr}
       h1{max-width:unset}
       .nav{flex-direction:column;align-items:flex-start}
       .nav-links{width:100%}
     }
 
     @media (max-width: 640px){
-      .gallery-grid{grid-template-columns:1fr}
       .container{width:min(100% - 1rem, 1160px)}
 
       .nav-links{
@@ -583,24 +602,41 @@
       </div>
     </section>
 
+    <!-- KAYAN GALERİ -->
     <section class="section" id="galeri">
       <div class="container">
         <div class="section-head">
           <div><h2>Galeri</h2></div>
         </div>
 
-        <div class="gallery-grid">
-          <figure class="card gallery-card" data-label="Dış görünüm">
-            <img src="./foto2.jpg" alt="Kuaför Sefa Kızılaslan dış cephe görünümü" width="1360" height="1020" loading="lazy" />
-          </figure>
+        <div class="gallery-marquee">
+          <div class="gallery-track">
+            <!-- 1. set -->
+            <figure class="card gallery-card" data-label="Dış görünüm">
+              <img src="./foto2.jpg" alt="Kuaför Sefa Kızılaslan dış cephe görünümü" width="1360" height="1020" loading="lazy" />
+            </figure>
 
-          <figure class="card gallery-card" data-label="Bekleme alanı">
-            <img src="./foto3.jpg" alt="Kuaför Sefa Kızılaslan bekleme alanı" width="574" height="1020" loading="lazy" />
-          </figure>
+            <figure class="card gallery-card" data-label="Bekleme alanı">
+              <img src="./foto3.jpg" alt="Kuaför Sefa Kızılaslan bekleme alanı" width="574" height="1020" loading="lazy" />
+            </figure>
 
-          <figure class="card gallery-card" data-label="Salon içi">
-            <img src="./foto1.jpg" alt="Kuaför Sefa Kızılaslan salon içi koltuk alanı" width="766" height="1024" loading="lazy" />
-          </figure>
+            <figure class="card gallery-card" data-label="Salon içi">
+              <img src="./foto1.jpg" alt="Kuaför Sefa Kızılaslan salon içi koltuk alanı" width="766" height="1024" loading="lazy" />
+            </figure>
+
+            <!-- 2. set (aynısı tekrar) -->
+            <figure class="card gallery-card" data-label="Dış görünüm">
+              <img src="./foto2.jpg" alt="Kuaför Sefa Kızılaslan dış cephe görünümü" width="1360" height="1020" loading="lazy" />
+            </figure>
+
+            <figure class="card gallery-card" data-label="Bekleme alanı">
+              <img src="./foto3.jpg" alt="Kuaför Sefa Kızılaslan bekleme alanı" width="574" height="1020" loading="lazy" />
+            </figure>
+
+            <figure class="card gallery-card" data-label="Salon içi">
+              <img src="./foto1.jpg" alt="Kuaför Sefa Kızılaslan salon içi koltuk alanı" width="766" height="1024" loading="lazy" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -634,139 +670,140 @@
     </section>
 
     <section class="section" id="yorumlar">
-  <div class="container">
-    <div class="section-head">
-      <div><h2>Yorumlar</h2></div>
-      <a class="btn-ghost" href="https://www.google.com/search?sca_esv=c6fc30b21a83f2e8&hl=tr-TR&biw=1528&bih=828&sxsrf=ANbL-n5rIqaVF4XKXuNXFxV8kTYh0l-tig:1780637125738&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOdNSIFsr7RyrkO3Gpa_0dA8DRLS1XKB167g3hY67OdrsvBV1ErT7T7-Yjy_JlSm2NO7O--HVxkSOeWGgYAL2mkrREGj8TXRQ6iIEQXudZHZV3U94EQ%3D%3D&q=Kuaf%C3%B6r+Erkan+K%C4%B1z%C4%B1laslan+Yorumlar&sa=X&ved=2ahUKEwjTiumaru-UAxXf2AIHHShGGsEQ0bkNegQIMhAF" target="_blank" rel="noopener noreferrer">
-        Tüm yorumları Google’da gör
-      </a>
-    </div>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Yorumlar</h2></div>
+          <a class="btn-ghost" href="https://www.google.com/search?sca_esv=c6fc30b21a83f2e8&hl=tr-TR&biw=1528&bih=828&sxsrf=ANbL-n5rIqaVF4XKXuNXFxV8kTYh0l-tig:1780637125738&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOdNSIFsr7RyrkO3Gpa_0dA8DRLS1XKB167g3hY67OdrsvBV1ErT7T7-Yjy_JlSm2NO7O--HVxkSOeWGgYAL2mkrREGj8TXRQ6iIEQXudZHZV3U94EQ%3D%3D&q=Kuaf%C3%B6r+Erkan+K%C4%B1z%C4%B1laslan+Yorumlar&sa=X&ved=2ahUKEwjTiumaru-UAxXf2AIHHShGGsEQ0bkNegQIMhAF" target="_blank" rel="noopener noreferrer">
+            Tüm yorumları Google’da gör
+          </a>
+        </div>
 
-    <div class="reviews-wrap">
-      <div class="reviews-track">
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Yusuf Kılıç</h3>
-          <p class="muted">
-            Ben seçiçi ve her berber de tıraş olmam izle takıntılı saça önem veririm ikinci traşım bugün oldum gerçekten işini layığıyla hakıyla yapan bir yer kişiye önem veren traşı para için yapmayan bir yer Tereddüt yaşamadan geliceğiniz bir mekan gerçekten kaliteli hizmet var tavsiye ediyorum herkese.
-          </p>
-        </article>
+        <div class="reviews-wrap">
+          <div class="reviews-track">
+            <!-- (yorum kartları aynen seninkiler) -->
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Yusuf Kılıç</h3>
+              <p class="muted">
+                Ben seçiçi ve her berber de tıraş olmam izle takıntılı saça önem veririm ikinci traşım bugün oldum gerçekten işini layığıyla hakıyla yapan bir yer kişiye önem veren traşı para için yapmayan bir yer Tereddüt yaşamadan geliceğiniz bir mekan gerçekten kaliteli hizmet var tavsiye ediyorum herkese.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Erkam Celtek</h3>
-          <p class="muted">
-            Erkan abi ye ilk kez traş oldum google üzerinden ulaştım kendisine ve çok beğendim istediğim gibi yaptı eline sağlık.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Erkam Celtek</h3>
+              <p class="muted">
+                Erkan abi ye ilk kez traş oldum google üzerinden ulaştım kendisine ve çok beğendim istediğim gibi yaptı eline sağlık.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Burak Danişmant</h3>
-          <p class="muted">
-            İlk defa gittim. kesim güzel, diyalog iyi. Abimiz işini profesyonel yapıyor öneririm.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Burak Danişmant</h3>
+              <p class="muted">
+                İlk defa gittim. kesim güzel, diyalog iyi. Abimiz işini profesyonel yapıyor öneririm.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Ali Yiğit KAHRAMAN</h3>
-          <p class="muted">
-            Bilecik'ten akraba ziyaretine geldim. Bu semtte kuaför tanıdığım olmadığı için Google üzerinden Erkan abiyi buldum. Traşımı oldum çok beğendim. Herkese tavsiye ederim.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Ali Yiğit KAHRAMAN</h3>
+              <p class="muted">
+                Bilecik'ten akraba ziyaretine geldim. Bu semtte kuaför tanıdığım olmadığı için Google üzerinden Erkan abiyi buldum. Traşımı oldum çok beğendim. Herkese tavsiye ederim.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>emre</h3>
-          <p class="muted">
-            Harika berber çok iyi ve ilgililerdi. Kalitenin tek adresi.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>emre</h3>
+              <p class="muted">
+                Harika berber çok iyi ve ilgililerdi. Kalitenin tek adresi.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Emre Kafadar</h3>
-          <p class="muted">
-            Herkese tavsiye ediyorum çünkü kendinizi özel hissettiriyor ortam gerçekten çok iyi.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Emre Kafadar</h3>
+              <p class="muted">
+                Herkese tavsiye ediyorum çünkü kendinizi özel hissettiriyor ortam gerçekten çok iyi.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Nihat Kılıçer</h3>
-          <p class="muted">
-            Bu mahallede yeniyim arkadaşlar Erkan abiyi internetten numarasını arayarak buldum kendisinin işi olmasına rağmen ilk defa gitmeme rağmen benimle güzel ilgilendi kendisine teşekkür ediyorum emekleri için çok güzel tıraş yapıyor.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Nihat Kılıçer</h3>
+              <p class="muted">
+                Bu mahallede yeniyim arkadaşlar Erkan abiyi internetten numarasını arayarak buldum kendisinin işi olmasına rağmen ilk defa gitmeme rağmen benimle güzel ilgilendi kendisine teşekkür ediyorum emekleri için çok güzel tıraş yapıyor.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Kadir Aksakal</h3>
-          <p class="muted">
-            Uzun zamandır geliyorum Sefa’ya traş olmaya, her gelişimde daha fazla memnun kalıyorum tavsiye ediyorum.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Kadir Aksakal</h3>
+              <p class="muted">
+                Uzun zamandır geliyorum Sefa’ya traş olmaya, her gelişimde daha fazla memnun kalıyorum tavsiye ediyorum.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>erde yıldız</h3>
-          <p class="muted">
-            İlk defa gittim direk olarak istediğim saç stilini yaptı fiyatına göre gayet başarılı.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>erde yıldız</h3>
+              <p class="muted">
+                İlk defa gittim direk olarak istediğim saç stilini yaptı fiyatına göre gayet başarılı.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Musa Rahmanlar</h3>
-          <p class="muted">
-            İlk defa gittim. İstediğim modeli yaptı. Güler yüzle ayrıldım. Teşekkür ederim.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Musa Rahmanlar</h3>
+              <p class="muted">
+                İlk defa gittim. İstediğim modeli yaptı. Güler yüzle ayrıldım. Teşekkür ederim.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Mustafa Talha Gündüz</h3>
-          <p class="muted">
-            İlk defa gittim ve çok memnun kaldım. Ne istediğimi kısa bir şekilde anlattım, Erkan abi buna uygun bir kesim yaptı. Ortam çok temiz ve sakin, çok huzurluydu. Tavsiye ederim.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Mustafa Talha Gündüz</h3>
+              <p class="muted">
+                İlk defa gittim ve çok memnun kaldım. Ne istediğimi kısa bir şekilde anlattım, Erkan abi buna uygun bir kesim yaptı. Ortam çok temiz ve sakin, çok huzurluydu. Tavsiye ederim.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Sinan Öner</h3>
-          <p class="muted">
-            En yakın kuaför aradım Eskişehir’den Google beni buraya getirdi. Çok memnun kaldım herkese tavsiye ederim verdiğim paraya değdi.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Sinan Öner</h3>
+              <p class="muted">
+                En yakın kuaför aradım Eskişehir’den Google beni buraya getirdi. Çok memnun kaldım herkese tavsiye ederim verdiğim paraya değdi.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Semih Kerim Kahriman</h3>
-          <p class="muted">
-            Kartal’dan geldim, Sefa Kızılaslan çok ilgili ve müşteriye önem veren biri. İşini ehliyle ve severek yapan nadir insanlardan, gönül rahatlığıyla gidebilirsiniz.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Semih Kerim Kahriman</h3>
+              <p class="muted">
+                Kartal’dan geldim, Sefa Kızılaslan çok ilgili ve müşteriye önem veren biri. İşini ehliyle ve severek yapan nadir insanlardan, gönül rahatlığıyla gidebilirsiniz.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Fatih Bengi</h3>
-          <p class="muted">
-            İlk defa gittiğim bir berber, istediğiniz stili çok ufak anlatmanız bile yetiyor mükemmel işçilik için. Gayet özenli ve başarılı bir berber, muhabbeti ve samimiyeti de işi kadar güzel.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Fatih Bengi</h3>
+              <p class="muted">
+                İlk defa gittiğim bir berber, istediğiniz stili çok ufak anlatmanız bile yetiyor mükemmel işçilik için. Gayet özenli ve başarılı bir berber, muhabbeti ve samimiyeti de işi kadar güzel.
+              </p>
+            </article>
 
-        <article class="card review-card">
-          <div class="stars">★★★★★</div>
-          <h3>Ali Altuntaş</h3>
-          <p class="muted">
-            Kuaför Erkan Kızılaslan’a gitmekten her zaman memnuniyet duyuyorum. İşini gerçekten iyi yapıyor ve saç kesimindeki detaylara özen gösteriyor. Uzun yıllardır müşterisiyim ve her seferinde memnun ayrılıyorum.
-          </p>
-        </article>
+            <article class="card review-card">
+              <div class="stars">★★★★★</div>
+              <h3>Ali Altuntaş</h3>
+              <p class="muted">
+                Kuaför Erkan Kızılaslan’a gitmekten her zaman memnuniyet duyuyorum. İşini gerçekten iyi yapıyor ve saç kesimindeki detaylara özen gösteriyor. Uzun yıllardır müşterisiyim ve her seferinde memnun ayrılıyorum.
+              </p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section class="section" id="iletisim">
       <div class="container contact-grid">
@@ -876,7 +913,7 @@
       });
     })();
     /* =======================================================================================================================
-                             MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
+                           MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
        ======================================================================================================================= */
   </script>
 </body>
