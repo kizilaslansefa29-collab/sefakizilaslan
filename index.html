@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kuaför Sefa Kızılaslan</title>
-    <link rel="icon" type="image/png" href="foto1.jpg">
-    <link rel="apple-touch-icon" href="foto1.jpg">
+  <link rel="icon" type="image/png" href="foto1.png">
+  <link rel="apple-touch-icon" href="foto1.png">
+
   <script>
     /* =======================================================================================================================
                            MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
@@ -84,7 +85,7 @@
       --color-surface-2:#161b24;
       --color-border:rgba(255,255,255,.09);
       --color-text:#f4eee6;
-      --color-text-muted:#a5a30;
+      --color-text-muted:#a5a3a0;
       --color-primary:#d6a65f;
       --color-primary-2:#735432;
       --color-inverse:#0d1016;
@@ -459,6 +460,54 @@
       border-top:1px solid var(--color-border);
     }
 
+    /* === Randevu Modalı === */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+
+    .modal.is-open{
+      display:flex;
+    }
+
+    .modal-backdrop{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.6);
+      backdrop-filter:blur(6px);
+    }
+
+    .modal-box{
+      position:relative;
+      z-index:1;
+      background:var(--color-surface);
+      color:var(--color-text);
+      padding:1.6rem 1.8rem;
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-lg);
+      width:min(360px,90vw);
+    }
+
+    .modal-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-bottom:1rem;
+    }
+
+    .modal-close{
+      border:none;
+      background:transparent;
+      color:var(--color-text-muted);
+      font-size:.9rem;
+      cursor:pointer;
+    }
+
     @media (max-width: 980px){
       .hero-wrap,.contact-grid,.service-grid,.pricing-grid{grid-template-columns:1fr}
       h1{max-width:unset}
@@ -537,6 +586,29 @@
     </div>
   </header>
 
+  <!-- Randevu Modalı -->
+  <div class="modal" id="randevu-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="randevu-baslik">
+      <h3 id="randevu-baslik">Randevu yöntemi seç</h3>
+      <p class="muted" style="margin-bottom:1rem">
+        Nasıl randevu almak istersiniz?
+      </p>
+      <div class="modal-actions">
+        <!-- Stylett: SITE_DATA.appointmentUrl -->
+        <a class="btn" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">
+          Stylett Uygulaması
+        </a>
+
+        <!-- Kolay Randevu: şimdilik düz link -->
+        <a class="btn-ghost" href="https://link" target="_blank" rel="noopener noreferrer">
+          Kolay Randevu Sitesi
+        </a>
+      </div>
+      <button class="modal-close" type="button" data-modal-close>Vazgeç</button>
+    </div>
+  </div>
+
   <main id="icerik">
     <section class="hero">
       <div class="container hero-wrap">
@@ -549,7 +621,7 @@
           <div class="hero-actions">
             <a class="btn" data-phone-link href="#">Telefon</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+            <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
             <a class="btn-ghost" data-instagram-link href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
 
@@ -578,7 +650,7 @@
             <div class="contact-actions">
               <a class="btn" data-phone-link href="#">Telefon</a>
               <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">Mesaj Gönder</a>
-              <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu</a>
+              <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Randevu</a>
             </div>
           </section>
         </aside>
@@ -694,7 +766,6 @@
         <div class="reviews-wrap">
           <div class="reviews-track">
 
-            <!-- 1 - Kadir Aksakal -->
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Kadir Aksakal</h3>
@@ -703,7 +774,6 @@
               </p>
             </article>
 
-            <!-- 2 - Semih Kerim Kahriman -->
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Semih Kerim Kahriman</h3>
@@ -712,7 +782,6 @@
               </p>
             </article>
 
-            <!-- 3 - Eyüp Çelik -->
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Eyüp Çelik</h3>
@@ -721,7 +790,6 @@
               </p>
             </article>
 
-            <!-- 4 - Burak Arslan -->
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Burak Arslan</h3>
@@ -730,7 +798,6 @@
               </p>
             </article>
 
-            <!-- Eski yorumlardan kısaltılmış iki örnek -->
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Yusuf Kılıç</h3>
@@ -759,14 +826,14 @@
           <div class="contact-list">
             <span>Telefon: <a data-phone-link-text href="#"></a></span>
             <span>Instagram: <a data-instagram-link-text href="#" target="_blank" rel="noopener noreferrer"></a></span>
-            <span>Randevu: <a data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Stylett üzerinden oluştur</a></span>
+            <span>Randevu: <a data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Stylett üzerinden oluştur</a></span>
             <span>Adres: <span data-address-text></span></span>
           </div>
 
           <div class="contact-actions" style="margin-top:1rem">
             <a class="btn" data-phone-link href="#">Hemen Ara</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp Aç</a>
-            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Stylett Randevu</a>
+            <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Stylett Randevu</a>
           </div>
         </article>
 
@@ -859,6 +926,29 @@
         setTheme();
       });
     })();
+
+    // Randevu modalını aç/kapat
+    (function(){
+      const modal = document.getElementById('randevu-modal');
+      if (!modal) return;
+
+      const openButtons = document.querySelectorAll('[data-appointment-open]');
+      const closeButtons = modal.querySelectorAll('[data-modal-close]');
+
+      openButtons.forEach(btn => {
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          modal.classList.add('is-open');
+        });
+      });
+
+      closeButtons.forEach(btn => {
+        btn.addEventListener('click', function(){
+          modal.classList.remove('is-open');
+        });
+      });
+    })();
+
     /* =======================================================================================================================
                            MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
        ======================================================================================================================= */
