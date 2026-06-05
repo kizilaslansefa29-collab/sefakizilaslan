@@ -9,13 +9,13 @@
 
   <script>
     /* =======================================================================================================================
-                           MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
+                               MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
        ======================================================================================================================= */
-    /* =========================================================
-       AŞAĞIYI DÜZENLEYEBİLİRSİN
-       Sadece aşağıdaki değerleri değiştirmen yeterli.
-       Diğer kodlara dokunma.
-    ========================================================== */
+/* =========================================================
+AŞAĞIYI DÜZENLEYEBİLİRSİN
+Sadece aşağıdaki değerleri değiştirmen yeterli.
+Diğer kodlara dokunma.
+========================================================== */
     const SITE_DATA = {
       prices: {
         hair: 600,
@@ -31,16 +31,17 @@
         phoneDisplay: "0551 013 37 93",
         phoneLink: "905510133793",
         instagram: "sefakzlsln",
-        appointmentUrl: "https://apps.apple.com/tr/app/stylett/id6759827060?l=tr",
+        email: "info@sefakizlaslan.com",
+        appointmentUrl: "https://calendar.app.google/qW7ubYUvtnFCicuM8",
         address: "Orhangazi, Rüzgargülü Sokağı No:10, 34903 Pendik / İstanbul",
         mapsQuery: "Orhangazi Rüzgargülü Sokağı No:10 34903 Pendik İstanbul"
       }
     };
     /* =========================================================
-       YUKARIYI DÜZENLEYEBİLİRSİN
-       Sadece yukarıdaki değerleri değiştirmen yeterli.
-       Diğer kodlara dokunma.
-    ========================================================== */
+                 YUKARIYI DÜZENLEYEBİLİRSİN
+                 Sadece yukarıdaki değerleri değiştirmen yeterli.
+                 Diğer kodlara dokunma.
+       ========================================================== */
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -162,7 +163,6 @@
       to{transform:translateY(42px)}
     }
 
-    /* Yorumlar ve galeri için ortak marquee animasyonu */
     @keyframes marquee{
       from{transform:translateX(0)}
       to{transform:translateX(-50%)}
@@ -343,8 +343,6 @@
       font-size:1.05rem;
     }
 
-    /* === Kayan galeri === */
-
     .gallery-marquee{
       overflow:hidden;
       position:relative;
@@ -460,54 +458,6 @@
       border-top:1px solid var(--color-border);
     }
 
-    /* === Randevu Modalı === */
-
-    .modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:1000;
-    }
-
-    .modal.is-open{
-      display:flex;
-    }
-
-    .modal-backdrop{
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.6);
-      backdrop-filter:blur(6px);
-    }
-
-    .modal-box{
-      position:relative;
-      z-index:1;
-      background:var(--color-surface);
-      color:var(--color-text);
-      padding:1.6rem 1.8rem;
-      border-radius:var(--radius-xl);
-      box-shadow:var(--shadow-lg);
-      width:min(360px,90vw);
-    }
-
-    .modal-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.75rem;
-      margin-bottom:1rem;
-    }
-
-    .modal-close{
-      border:none;
-      background:transparent;
-      color:var(--color-text-muted);
-      font-size:.9rem;
-      cursor:pointer;
-    }
-
     @media (max-width: 980px){
       .hero-wrap,.contact-grid,.service-grid,.pricing-grid{grid-template-columns:1fr}
       h1{max-width:unset}
@@ -586,29 +536,6 @@
     </div>
   </header>
 
-  <!-- Randevu Modalı -->
-  <div class="modal" id="randevu-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-modal-close></div>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="randevu-baslik">
-      <h3 id="randevu-baslik">Randevu yöntemi seç</h3>
-      <p class="muted" style="margin-bottom:1rem">
-        Nasıl randevu almak istersiniz?
-      </p>
-      <div class="modal-actions">
-        <!-- Stylett: SITE_DATA.appointmentUrl -->
-        <a class="btn" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">
-          Stylett Uygulaması
-        </a>
-
-        <!-- Kolay Randevu: şimdilik düz link -->
-        <a class="btn-ghost" href="https://link" target="_blank" rel="noopener noreferrer">
-          Kolay Randevu Sitesi
-        </a>
-      </div>
-      <button class="modal-close" type="button" data-modal-close>Vazgeç</button>
-    </div>
-  </div>
-
   <main id="icerik">
     <section class="hero">
       <div class="container hero-wrap">
@@ -621,7 +548,7 @@
           <div class="hero-actions">
             <a class="btn" data-phone-link href="#">Telefon</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
             <a class="btn-ghost" data-instagram-link href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
 
@@ -650,7 +577,7 @@
             <div class="contact-actions">
               <a class="btn" data-phone-link href="#">Telefon</a>
               <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">Mesaj Gönder</a>
-              <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Randevu</a>
+              <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu</a>
             </div>
           </section>
         </aside>
@@ -685,7 +612,6 @@
       </div>
     </section>
 
-    <!-- KAYAN GALERİ -->
     <section class="section" id="galeri">
       <div class="container">
         <div class="section-head">
@@ -694,7 +620,6 @@
 
         <div class="gallery-marquee">
           <div class="gallery-track">
-            <!-- 1. set -->
             <figure class="card gallery-card" data-label="">
               <img src="./foto2.jpg" alt="" width="1360" height="1020" loading="lazy" />
             </figure>
@@ -707,7 +632,6 @@
               <img src="./foto4.jpg" alt="" width="766" height="1024" loading="lazy" />
             </figure>
 
-            <!-- 2. set -->
             <figure class="card gallery-card" data-label="">
               <img src="./foto5.jpg" alt="" width="1360" height="1020" loading="lazy" />
             </figure>
@@ -752,7 +676,6 @@
       </div>
     </section>
 
-    <!-- GÜNCEL YORUMLAR -->
     <section class="section" id="yorumlar">
       <div class="container">
         <div class="section-head">
@@ -765,7 +688,6 @@
 
         <div class="reviews-wrap">
           <div class="reviews-track">
-
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Kadir Aksakal</h3>
@@ -813,7 +735,6 @@
                 Ortam çok temiz ve sakin. Kendinizi özel hissettiriyor, herkese tavsiye ederim.
               </p>
             </article>
-
           </div>
         </div>
       </div>
@@ -825,15 +746,16 @@
           <h3>İletişim bilgileri</h3>
           <div class="contact-list">
             <span>Telefon: <a data-phone-link-text href="#"></a></span>
+            <span>E-posta: <a data-email-link href="#"></a></span>
             <span>Instagram: <a data-instagram-link-text href="#" target="_blank" rel="noopener noreferrer"></a></span>
-            <span>Randevu: <a data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Stylett üzerinden oluştur</a></span>
+            <span>Randevu: <a data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Google Takvim üzerinden oluştur</a></span>
             <span>Adres: <span data-address-text></span></span>
           </div>
 
           <div class="contact-actions" style="margin-top:1rem">
             <a class="btn" data-phone-link href="#">Hemen Ara</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp Aç</a>
-            <a class="btn-ghost" data-appointment-link data-appointment-open href="#" target="_blank" rel="noopener noreferrer">Stylett Randevu</a>
+            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
           </div>
         </article>
 
@@ -845,6 +767,19 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             src=""></iframe>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="randevu">
+      <div class="container">
+        <article class="card contact-card" style="text-align:center;padding:1.5rem;">
+          <h3>Online Randevu</h3>
+          <p class="muted">Uygun gün ve saatleri görmek için Google Takvim randevu sayfasını açın.</p>
+          <div class="contact-actions" style="justify-content:center;margin-top:1rem;">
+            <a class="btn" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+            <a class="btn-ghost" data-email-link href="#">E-posta Gönder</a>
+          </div>
         </article>
       </div>
     </section>
@@ -896,12 +831,14 @@
     setText('[data-address-text]', SITE_DATA.contact.address);
     setText('[data-phone-link-text]', SITE_DATA.contact.phoneDisplay);
     setText('[data-instagram-link-text]', '@' + SITE_DATA.contact.instagram);
+    setText('[data-email-link]', SITE_DATA.contact.email);
 
     setHref('[data-phone-link]', 'tel:' + SITE_DATA.contact.phoneLink);
     setHref('[data-whatsapp-link]', 'https://wa.me/' + SITE_DATA.contact.phoneLink);
     setHref('[data-appointment-link]', SITE_DATA.contact.appointmentUrl);
     setHref('[data-instagram-link]', 'https://www.instagram.com/' + SITE_DATA.contact.instagram + '/');
     setHref('[data-instagram-link-text]', 'https://www.instagram.com/' + SITE_DATA.contact.instagram + '/');
+    setHref('[data-email-link]', 'mailto:' + SITE_DATA.contact.email);
     setHref('[data-maps-link]', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SITE_DATA.contact.mapsQuery));
 
     document.querySelectorAll('[data-map-embed]').forEach(el => {
@@ -926,31 +863,8 @@
         setTheme();
       });
     })();
-
-    // Randevu modalını aç/kapat
-    (function(){
-      const modal = document.getElementById('randevu-modal');
-      if (!modal) return;
-
-      const openButtons = document.querySelectorAll('[data-appointment-open]');
-      const closeButtons = modal.querySelectorAll('[data-modal-close]');
-
-      openButtons.forEach(btn => {
-        btn.addEventListener('click', function(e){
-          e.preventDefault();
-          modal.classList.add('is-open');
-        });
-      });
-
-      closeButtons.forEach(btn => {
-        btn.addEventListener('click', function(){
-          modal.classList.remove('is-open');
-        });
-      });
-    })();
-
     /* =======================================================================================================================
-                           MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - [info@msabridogruyol.com](mailto:info@msabridogruyol.com)
+                              MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
        ======================================================================================================================= */
   </script>
 </body>
