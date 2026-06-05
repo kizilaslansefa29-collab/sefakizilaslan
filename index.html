@@ -8,14 +8,6 @@
   <link rel="apple-touch-icon" href="foto1.png">
 
   <script>
-    /* =======================================================================================================================
-                               MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
-       ======================================================================================================================= */
-/* =========================================================
-AŞAĞIYI DÜZENLEYEBİLİRSİN
-Sadece aşağıdaki değerleri değiştirmen yeterli.
-Diğer kodlara dokunma.
-========================================================== */
     const SITE_DATA = {
       prices: {
         hair: 600,
@@ -32,16 +24,10 @@ Diğer kodlara dokunma.
         phoneLink: "905510133793",
         instagram: "sefakzlsln",
         email: "info@sefakizlaslan.com",
-        appointmentUrl: "https://calendar.app.google/qW7ubYUvtnFCicuM8",
         address: "Orhangazi, Rüzgargülü Sokağı No:10, 34903 Pendik / İstanbul",
         mapsQuery: "Orhangazi Rüzgargülü Sokağı No:10 34903 Pendik İstanbul"
       }
     };
-    /* =========================================================
-                 YUKARIYI DÜZENLEYEBİLİRSİN
-                 Sadece yukarıdaki değerleri değiştirmen yeterli.
-                 Diğer kodlara dokunma.
-       ========================================================== */
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -416,12 +402,30 @@ Diğer kodlara dokunma.
     .review-card h3{margin:0 0 .35rem;font-size:1rem}
     .stars{color:var(--color-primary);letter-spacing:2px;font-size:.95rem;margin-bottom:.5rem}
 
-    .contact-card iframe{
+    .contact-card iframe,
+    .appointment-frame iframe{
       width:100%;
-      height:260px;
       border:0;
       border-radius:1rem;
+      display:block;
+    }
+
+    .contact-card iframe{
+      height:260px;
       filter:grayscale(.2) contrast(1.05);
+    }
+
+    .appointment-frame{
+      margin-top:1rem;
+      border:1px solid var(--color-border);
+      border-radius:1rem;
+      overflow:hidden;
+      background:var(--color-surface-2);
+    }
+
+    .appointment-frame iframe{
+      height:700px;
+      background:#fff;
     }
 
     .contact-list{display:grid;gap:.6rem;color:var(--color-text-muted)}
@@ -490,6 +494,7 @@ Diğer kodlara dokunma.
       .meta-row{gap:.5rem}
       .meta-pill{font-size:.72rem;padding:.6rem .75rem}
       .whatsapp-float a span{display:none}
+      .appointment-frame iframe{height:620px}
     }
 
     @media (max-width: 420px){
@@ -548,7 +553,7 @@ Diğer kodlara dokunma.
           <div class="hero-actions">
             <a class="btn" data-phone-link href="#">Telefon</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+            <a class="btn-ghost" href="#randevu">Randevu Al</a>
             <a class="btn-ghost" data-instagram-link href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
 
@@ -577,7 +582,7 @@ Diğer kodlara dokunma.
             <div class="contact-actions">
               <a class="btn" data-phone-link href="#">Telefon</a>
               <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">Mesaj Gönder</a>
-              <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu</a>
+              <a class="btn-ghost" href="#randevu">Randevu</a>
             </div>
           </section>
         </aside>
@@ -691,49 +696,37 @@ Diğer kodlara dokunma.
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Kadir Aksakal</h3>
-              <p class="muted">
-                Uzun zamandır geliyorum Sefa’ya traş olmaya, her gelişimde daha fazla memnun kalıyorum. Tavsiye ediyorum.
-              </p>
+              <p class="muted">Uzun zamandır geliyorum Sefa’ya traş olmaya, her gelişimde daha fazla memnun kalıyorum. Tavsiye ediyorum.</p>
             </article>
 
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Semih Kerim Kahriman</h3>
-              <p class="muted">
-                Kartal’dan geldim, konumu bulması kolaydı. Sefa Kızılaslan çok ilgili ve müşteriye önem veren biri. İşini ehliyle ve severek yapıyor, gönül rahatlığıyla gidebilirsiniz.
-              </p>
+              <p class="muted">Kartal’dan geldim, konumu bulması kolaydı. Sefa Kızılaslan çok ilgili ve müşteriye önem veren biri. İşini ehliyle ve severek yapıyor, gönül rahatlığıyla gidebilirsiniz.</p>
             </article>
 
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Eyüp Çelik</h3>
-              <p class="muted">
-                Arkadaşlarla beraber çok memnun kaldık. Bizi traş eden Sefa Kızılaslan’ın ellerine sağlık, teşekkür ederiz.
-              </p>
+              <p class="muted">Arkadaşlarla beraber çok memnun kaldık. Bizi traş eden Sefa Kızılaslan’ın ellerine sağlık, teşekkür ederiz.</p>
             </article>
 
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Burak Arslan</h3>
-              <p class="muted">
-                Sefa kardeşim çok ilgili ve işinde iyi bir arkadaş. Kendisine teşekkürlerimi iletiyorum.
-              </p>
+              <p class="muted">Sefa kardeşim çok ilgili ve işinde iyi bir arkadaş. Kendisine teşekkürlerimi iletiyorum.</p>
             </article>
 
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Yusuf Kılıç</h3>
-              <p class="muted">
-                İşini layığıyla yapan, kişiye önem veren bir yer. Tereddüt etmeden gelebilirsiniz.
-              </p>
+              <p class="muted">İşini layığıyla yapan, kişiye önem veren bir yer. Tereddüt etmeden gelebilirsiniz.</p>
             </article>
 
             <article class="card review-card">
               <div class="stars">★★★★★</div>
               <h3>Emre Kafadar</h3>
-              <p class="muted">
-                Ortam çok temiz ve sakin. Kendinizi özel hissettiriyor, herkese tavsiye ederim.
-              </p>
+              <p class="muted">Ortam çok temiz ve sakin. Kendinizi özel hissettiriyor, herkese tavsiye ederim.</p>
             </article>
           </div>
         </div>
@@ -748,14 +741,13 @@ Diğer kodlara dokunma.
             <span>Telefon: <a data-phone-link-text href="#"></a></span>
             <span>E-posta: <a data-email-link href="#"></a></span>
             <span>Instagram: <a data-instagram-link-text href="#" target="_blank" rel="noopener noreferrer"></a></span>
-            <span>Randevu: <a data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Google Takvim üzerinden oluştur</a></span>
             <span>Adres: <span data-address-text></span></span>
           </div>
 
           <div class="contact-actions" style="margin-top:1rem">
             <a class="btn" data-phone-link href="#">Hemen Ara</a>
             <a class="btn-ghost" data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer">WhatsApp Aç</a>
-            <a class="btn-ghost" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+            <a class="btn-ghost" href="#randevu">Randevu Alanına Git</a>
           </div>
         </article>
 
@@ -773,11 +765,28 @@ Diğer kodlara dokunma.
 
     <section class="section" id="randevu">
       <div class="container">
-        <article class="card contact-card" style="text-align:center;padding:1.5rem;">
+        <article class="card contact-card">
           <h3>Online Randevu</h3>
-          <p class="muted">Uygun gün ve saatleri görmek için Google Takvim randevu sayfasını açın.</p>
-          <div class="contact-actions" style="justify-content:center;margin-top:1rem;">
-            <a class="btn" data-appointment-link href="#" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+          <p class="muted">
+            Aşağıdaki takvimden uygun gün ve saatleri seçerek randevu oluşturabilirsiniz.
+          </p>
+
+          <div class="appointment-frame">
+            <!-- Google Calendar Appointment Scheduling begin -->
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0fEfj_VWh8Knrz9LGMG0rw45yu9mpsWg5pwbz-03pGepSwuvFa0Bc0aXPG5Tb4lnVJYcBUz2jT?gv=true"
+              style="border:0"
+              width="100%"
+              height="600"
+              frameborder="0"
+              title="Google Takvim randevu alanı"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+            <!-- end Google Calendar Appointment Scheduling -->
+          </div>
+
+          <div class="contact-actions" style="margin-top:1rem">
             <a class="btn-ghost" data-email-link href="#">E-posta Gönder</a>
           </div>
         </article>
@@ -835,7 +844,6 @@ Diğer kodlara dokunma.
 
     setHref('[data-phone-link]', 'tel:' + SITE_DATA.contact.phoneLink);
     setHref('[data-whatsapp-link]', 'https://wa.me/' + SITE_DATA.contact.phoneLink);
-    setHref('[data-appointment-link]', SITE_DATA.contact.appointmentUrl);
     setHref('[data-instagram-link]', 'https://www.instagram.com/' + SITE_DATA.contact.instagram + '/');
     setHref('[data-instagram-link-text]', 'https://www.instagram.com/' + SITE_DATA.contact.instagram + '/');
     setHref('[data-email-link]', 'mailto:' + SITE_DATA.contact.email);
@@ -863,9 +871,6 @@ Diğer kodlara dokunma.
         setTheme();
       });
     })();
-    /* =======================================================================================================================
-                              MUSTAFA SABRİ DOĞRUYOL - msabridogruyol.com - info@msabridogruyol.com
-       ======================================================================================================================= */
   </script>
 </body>
 </html>
