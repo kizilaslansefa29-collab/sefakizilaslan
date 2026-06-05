@@ -513,6 +513,225 @@
         scroll-behavior:auto !important;
       }
     }
+    .appointment-shell{
+  position:relative;
+  overflow:hidden;
+  padding:1.25rem;
+}
+
+.appointment-shell::before{
+  content:"";
+  position:absolute;
+  inset:auto -10% -30% auto;
+  width:18rem;
+  height:18rem;
+  border-radius:999px;
+  background:radial-gradient(circle, color-mix(in srgb, var(--color-primary) 28%, transparent), transparent 62%);
+  filter:blur(18px);
+  opacity:.7;
+  pointer-events:none;
+}
+
+.appointment-top{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:1rem;
+  align-items:stretch;
+  margin-bottom:1rem;
+}
+
+.appointment-copy{
+  position:relative;
+  z-index:1;
+  padding:1.25rem;
+  border-radius:1.2rem;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent));
+  border:1px solid var(--color-border);
+}
+
+.appointment-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.45rem .8rem;
+  border-radius:999px;
+  border:1px solid var(--color-border);
+  background:color-mix(in srgb, var(--color-surface) 86%, transparent);
+  color:var(--color-primary);
+  font-size:var(--text-xs);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-bottom:.9rem;
+}
+
+.appointment-title{
+  margin:0 0 .65rem;
+  font-family:var(--font-display);
+  font-size:clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+  line-height:1.05;
+}
+
+.appointment-copy p{
+  margin:0;
+  max-width:58ch;
+  color:var(--color-text-muted);
+}
+
+.appointment-points{
+  display:grid;
+  gap:.75rem;
+  margin-top:1rem;
+}
+
+.appointment-point{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+  padding:.85rem .95rem;
+  border-radius:1rem;
+  border:1px solid var(--color-border);
+  background:color-mix(in srgb, var(--color-surface) 84%, transparent);
+}
+
+.appointment-point strong{
+  display:block;
+  margin-bottom:.15rem;
+  font-size:.98rem;
+}
+
+.appointment-point span{
+  display:block;
+  color:var(--color-text-muted);
+  font-size:var(--text-sm);
+  line-height:1.5;
+}
+
+.appointment-icon{
+  flex:0 0 2.5rem;
+  width:2.5rem;
+  height:2.5rem;
+  border-radius:.9rem;
+  display:grid;
+  place-items:center;
+  color:#111;
+  background:linear-gradient(135deg, var(--color-primary), var(--color-primary-2));
+  box-shadow:var(--shadow-lg);
+}
+
+.appointment-side{
+  display:grid;
+  gap:1rem;
+}
+
+.appointment-mini{
+  padding:1rem;
+  border-radius:1.2rem;
+  border:1px solid var(--color-border);
+  background:color-mix(in srgb, var(--color-surface) 90%, transparent);
+}
+
+.appointment-mini h4{
+  margin:0 0 .4rem;
+  font-size:1rem;
+}
+
+.appointment-mini p{
+  margin:0;
+  color:var(--color-text-muted);
+  font-size:var(--text-sm);
+}
+
+.appointment-frame-wrap{
+  position:relative;
+  z-index:1;
+  padding:.8rem;
+  border-radius:1.4rem;
+  border:1px solid var(--color-border);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-surface) 94%, transparent),
+      color-mix(in srgb, var(--color-surface-2) 98%, transparent)
+    );
+  box-shadow:var(--shadow-lg);
+}
+
+.appointment-frame-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--color-primary) 60%, transparent),
+    transparent 30%,
+    color-mix(in srgb, var(--color-primary-2) 55%, transparent)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+}
+
+.appointment-frame{
+  overflow:hidden;
+  border-radius:1rem;
+  background:#fff;
+  min-height:720px;
+}
+
+.appointment-frame iframe{
+  width:100%;
+  height:720px;
+  border:0;
+  display:block;
+  background:#fff;
+}
+
+.appointment-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+  flex-wrap:wrap;
+}
+
+.appointment-note{
+  color:var(--color-text-muted);
+  font-size:var(--text-sm);
+}
+
+@media (max-width: 980px){
+  .appointment-top{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .appointment-shell{
+    padding:1rem;
+  }
+
+  .appointment-copy,
+  .appointment-mini{
+    padding:1rem;
+  }
+
+  .appointment-frame{
+    min-height:620px;
+  }
+
+  .appointment-frame iframe{
+    height:620px;
+  }
+
+  .appointment-footer{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
   </style>
 </head>
 <body>
@@ -771,20 +990,103 @@
             Aşağıdaki takvimden uygun gün ve saatleri seçerek randevu oluşturabilirsiniz.
           </p>
 
-          <div class="appointment-frame">
-            <!-- Google Calendar Appointment Scheduling begin -->
-            <iframe
-              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0fEfj_VWh8Knrz9LGMG0rw45yu9mpsWg5pwbz-03pGepSwuvFa0Bc0aXPG5Tb4lnVJYcBUz2jT?gv=true"
-              style="border:0"
-              width="100%"
-              height="600"
-              frameborder="0"
-              title="Google Takvim randevu alanı"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>
-            <!-- end Google Calendar Appointment Scheduling -->
+          <section class="section" id="randevu">
+  <div class="container">
+    <article class="card appointment-shell">
+      <div class="appointment-top">
+        <div class="appointment-copy">
+          <div class="appointment-kicker">Online randevu</div>
+          <h3 class="appointment-title">Uygun saatini seç, randevunu kolayca oluştur.</h3>
+          <p>
+            Aşağıdaki takvimden müsait gün ve saatleri görüntüleyebilir, telefon bilginizi bırakarak hızlıca randevu oluşturabilirsiniz.
+          </p>
+
+          <div class="appointment-points">
+            <div class="appointment-point">
+              <div class="appointment-icon">✓</div>
+              <div>
+                <strong>Hızlı seçim</strong>
+                <span>Boş saatleri anında görüp size uygun zamanı seçin.</span>
+              </div>
+            </div>
+
+            <div class="appointment-point">
+              <div class="appointment-icon">☎</div>
+              <div>
+                <strong>Telefon bilgisi alınır</strong>
+                <span>Gerektiğinde sizinle telefon üzerinden hızlıca iletişime geçilebilir.</span>
+              </div>
+            </div>
+
+            <div class="appointment-point">
+              <div class="appointment-icon">★</div>
+              <div>
+                <strong>Kolay kullanım</strong>
+                <span>Ek uygulama zorunlu olmadan doğrudan site içinden işlem yapılır.</span>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="appointment-side">
+          <div class="appointment-mini">
+            <h4>İletişim</h4>
+            <p>
+              Sorularınız için <a data-email-link href="#" style="color:var(--color-primary);font-weight:700;"></a>
+              adresine yazabilirsiniz.
+            </p>
+          </div>
+
+          <div class="appointment-mini">
+            <h4>Telefon</h4>
+            <p>
+              Hızlı ulaşım için <a data-phone-link href="#" style="color:var(--color-primary);font-weight:700;" data-phone-link-text></a>
+              numarasını kullanabilirsiniz.
+            </p>
+          </div>
+
+          <div class="appointment-mini">
+            <h4>WhatsApp</h4>
+            <p>
+              Yazışarak bilgi almak için
+              <a data-whatsapp-link href="#" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);font-weight:700;">
+                WhatsApp üzerinden ulaşın
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="appointment-frame-wrap">
+        <div class="appointment-frame">
+          <!-- Google Calendar Appointment Scheduling begin -->
+          <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0fEfj_VWh8Knrz9LGMG0rw45yu9mpsWg5pwbz-03pGepSwuvFa0Bc0aXPG5Tb4lnVJYcBUz2jT?gv=true"
+            style="border:0"
+            width="100%"
+            height="600"
+            frameborder="0"
+            title="Google Takvim randevu alanı"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+          <!-- end Google Calendar Appointment Scheduling -->
+        </div>
+      </div>
+
+      <div class="appointment-footer">
+        <span class="appointment-note">
+          Takvim görünümü Google tarafından sağlanır; randevu işlemi site içinden tamamlanır. [web:139]
+        </span>
+
+        <div class="contact-actions">
+          <a class="btn-ghost" data-email-link href="#">E-posta Gönder</a>
+          <a class="btn" data-phone-link href="#">Hemen Ara</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 
           <div class="contact-actions" style="margin-top:1rem">
             <a class="btn-ghost" data-email-link href="#">E-posta Gönder</a>
